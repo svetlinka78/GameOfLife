@@ -1,0 +1,48 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<h1>Game of life</h1>
+
+<div class="row">
+    <div class="col-md-4">
+        <label>
+            Your message:
+            <input type="text" data-bind="value: message" />
+        </label>
+        <button class="btn btn-primary" data-bind="click: sendMessage">Send</button>
+        <button class="btn btn-primary" data-bind="click: startGame">Start Game</button>
+        <button class="btn btn-primary" data-bind="click: stopGame">Stop Game</button>
+    </div>
+    <div class="col-md-4">
+        <div data-bind="foreach: messages">
+            <div data-bind="text:$data"></div>
+        </div>
+    </div>
+</div>
+<div class="row" data-bind="foreach: points">
+    <div class="col-md-12">
+        <h2 data-bind="text:name"></h2>
+        <canvas data-bind="attr: {'id': name}" height="100" width="800"></canvas>
+    </div>
+</div>
+
+
+<div class="row" data-bind="foreach: gpoints">
+    <div class="col-md-12">
+        <h3 data-bind="text:name"></h3>
+        <canvas data-bind="attr: {'id': name}"></canvas>
+    </div>
+</div>
+
+
+
+
+@section scripts {
+    <script src="~/Scripts/knockout-3.3.0.js"></script>
+    <script src="~/Scripts/jquery.signalR-2.2.0.js"></script>
+    <script src="~/signalr/hubs"></script>
+    <script src="~/Scripts/game.js"></script>
+    <script src="~/Scripts/smoothie.js"></script> 
+    
+}
